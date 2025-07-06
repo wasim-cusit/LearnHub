@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-500">Total Students</p>
+                                <p class="text-sm font-medium text-gray-500">My Students</p>
                                 <p class="text-2xl font-bold text-gray-900">{{ $stats['total_students'] }}</p>
                             </div>
                         </div>
@@ -202,7 +202,13 @@
                                     @foreach($students as $student)
                                         <div class="flex items-center p-3 bg-gray-50 rounded-lg">
                                             <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full flex items-center justify-center mr-3">
-                                                <span class="text-white text-sm font-medium">{{ substr($student->name, 0, 1) }}</span>
+                                                @if($student->profile_picture)
+                                                    <img src="{{ asset('storage/' . $student->profile_picture) }}"
+                                                         alt="{{ $student->name }}"
+                                                         class="w-8 h-8 rounded-full object-cover">
+                                                @else
+                                                    <span class="text-white text-sm font-medium">{{ strtoupper(substr($student->name, 0, 1)) }}</span>
+                                                @endif
                                             </div>
                                             <div>
                                                 <h4 class="font-medium text-gray-900">{{ $student->name }}</h4>
@@ -215,7 +221,15 @@
                                     <a href="{{ route('students.index') }}" class="text-purple-600 hover:text-purple-800 text-sm font-medium">View All Students</a>
                                 </div>
                             @else
-                                <p class="text-gray-500 text-center py-4">No students registered yet.</p>
+                                <div class="text-center py-6">
+                                    <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-users text-gray-400 text-xl"></i>
+                                    </div>
+                                    <p class="text-gray-500 mb-3">No students created yet.</p>
+                                    <a href="{{ route('students.create') }}" class="inline-block bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200 text-sm">
+                                        Create Student Account
+                                    </a>
+                                </div>
                             @endif
                         </div>
                     </div>

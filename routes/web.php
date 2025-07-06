@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\LearningTaskController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LearningRedirect;
 
@@ -34,13 +35,17 @@ Route::middleware('auth')->group(function () {
     Route::resource('tasks', TaskController::class);
     Route::patch('/tasks/{task}/toggle-status', [TaskController::class, 'toggleStatus'])->name('tasks.toggle-status');
 
-    // Teacher: list all students
-    Route::get('/students', [TaskController::class, 'students'])->name('students.index');
+
 
     // Learning Tasks routes
     Route::resource('learning-tasks', LearningTaskController::class);
     Route::patch('/learning-tasks/{learningTask}/update-status', [LearningTaskController::class, 'updateStatus'])->name('learning-tasks.update-status');
     Route::get('/learning-dashboard', [LearningTaskController::class, 'dashboard'])->name('learning-tasks.dashboard');
+
+    // Student Management routes (Teachers only)
+    Route::middleware(['auth', 'role:teacher'])->group(function () {
+        Route::resource('students', StudentController::class);
+    });
 });
 
 require __DIR__.'/auth.php';

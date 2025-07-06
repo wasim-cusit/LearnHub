@@ -31,6 +31,7 @@ class User extends Authenticatable
         'state',
         'country',
         'postal_code',
+        'created_by',
     ];
 
     /**
@@ -74,5 +75,21 @@ class User extends Authenticatable
     public function isStudent()
     {
         return $this->role === 'student';
+    }
+
+    /**
+     * Get the teacher who created this student.
+     */
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    /**
+     * Get the students created by this teacher.
+     */
+    public function createdStudents()
+    {
+        return $this->hasMany(User::class, 'created_by')->where('role', 'student');
     }
 }

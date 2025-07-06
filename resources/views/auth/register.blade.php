@@ -50,8 +50,10 @@
                         </label>
                         <div class="flex items-center space-x-4">
                             <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center border-2 border-dashed border-gray-300 hover:border-blue-400 transition-colors duration-200">
-                                <img id="profile-preview" class="w-20 h-20 rounded-full object-cover hidden" alt="Profile Preview">
-                                <i class="fas fa-user text-gray-400 text-2xl" id="default-icon"></i>
+                                                            <img id="profile-preview" class="w-20 h-20 rounded-full object-cover hidden" alt="Profile Preview">
+                            <div class="w-20 h-20 rounded-full bg-gradient-to-r from-blue-400 to-purple-600 flex items-center justify-center text-white text-2xl font-bold" id="default-icon">
+                                <span id="default-letter">A</span>
+                            </div>
                             </div>
                             <div class="flex-1">
                                 <input type="file"
@@ -359,7 +361,7 @@
                         @enderror
                     </div>
 
-                    <!-- Enhanced Role Selection -->
+                    <!-- Role Selection -->
                     <div class="group">
                         <label class="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
                             <div class="w-8 h-8 bg-gradient-to-r from-purple-400 to-purple-600 rounded-lg flex items-center justify-center mr-3">
@@ -410,6 +412,24 @@
                                 <i class="fas fa-exclamation-circle mr-1"></i>{{ $message }}
                             </p>
                         @enderror
+                    </div>
+
+                    <!-- Registration Notice -->
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-600 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-info-circle text-white text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-blue-900">Registration Options</h3>
+                                <div class="mt-2 text-sm text-blue-700 space-y-2">
+                                    <p><strong>Students:</strong> Register directly to access learning materials and track your progress.</p>
+                                    <p><strong>Teachers:</strong> Register to create and manage student accounts, assign tasks, and monitor progress.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Password Field -->
@@ -574,7 +594,7 @@
             });
         });
 
-        // Profile picture preview functionality
+                // Profile picture preview functionality
         function previewImage(input) {
             const file = input.files[0];
             const preview = document.getElementById('profile-preview');
@@ -593,6 +613,17 @@
                 defaultIcon.classList.remove('hidden');
             }
         }
+
+        // Update default letter when name changes
+        document.getElementById('name').addEventListener('input', function() {
+            const name = this.value;
+            const defaultLetter = document.getElementById('default-letter');
+            if (name.length > 0) {
+                defaultLetter.textContent = name.charAt(0).toUpperCase();
+            } else {
+                defaultLetter.textContent = 'A';
+            }
+        });
 
         // Add floating animation to background elements
         document.addEventListener('DOMContentLoaded', function() {

@@ -26,13 +26,51 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $validatedData = $request->validated();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        // Handle profile picture upload
+        if ($request->hasFile('profile_picture')) {
+            try {
+                // Delete old profile picture if exists
+                if ($user->profile_picture) {
+                    $oldPath = storage_path('app/public/' . $user->profile_picture);
+                    if (file_exists($oldPath)) {
+                        unlink($oldPath);
+                    }
+                }
+
+                $profilePicture = $request->file('profile_picture');
+                $filename = time() . '_' . $profilePicture->getClientOriginalName();
+
+                // Ensure the directory exists
+                $directory = storage_path('app/public/profile-pictures');
+                if (!file_exists($directory)) {
+                    mkdir($directory, 0755, true);
+                }
+
+                // Store the file
+                $path = $profilePicture->storeAs('public/profile-pictures', $filename);
+
+                if ($path) {
+                    $validatedData['profile_picture'] = 'profile-pictures/' . $filename;
+                } else {
+                    // Log error if upload fails
+                    \Illuminate\Support\Facades\Log::error('Profile picture upload failed for user: ' . $user->email);
+                }
+            } catch (\Exception $e) {
+                // Log any exceptions during upload
+                \Illuminate\Support\Facades\Log::error('Profile picture upload exception: ' . $e->getMessage());
+            }
         }
 
-        $request->user()->save();
+        $user->fill($validatedData);
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+
+        $user->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

@@ -24,7 +24,7 @@ class DashboardController extends Controller
 
         // Get statistics for teacher dashboard
         $stats = [
-            'total_students' => User::where('role', 'student')->count(),
+            'total_students' => User::where('role', 'student')->where('created_by', $user->id)->count(),
             'total_tasks_created' => Task::where('user_id', $user->id)->count(),
             'completed_tasks' => Task::where('user_id', $user->id)->where('status', 'completed')->count(),
             'pending_tasks' => Task::where('user_id', $user->id)->where('status', 'pending')->count(),
@@ -36,9 +36,10 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
-        // Get students list
+        // Get students created by this teacher
         $students = User::where('role', 'student')
-            ->orderBy('name')
+            ->where('created_by', $user->id)
+            ->orderBy('created_at', 'desc')
             ->take(10)
             ->get();
 

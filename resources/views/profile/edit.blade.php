@@ -17,13 +17,15 @@
             <div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl shadow-xl p-8 text-white">
                 <div class="flex items-center space-x-6">
                     <div class="relative">
-                        <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center border-4 border-white/30">
+                                                <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center border-4 border-white/30">
                             @if($user->profile_picture)
                                 <img src="{{ asset('storage/' . $user->profile_picture) }}"
                                      alt="{{ $user->name }}"
                                      class="w-20 h-20 rounded-full object-cover">
                             @else
-                                <i class="fas fa-user text-white text-3xl"></i>
+                                <div class="w-20 h-20 rounded-full bg-gradient-to-r from-blue-400 to-purple-600 flex items-center justify-center text-white text-2xl font-bold">
+                                    {{ strtoupper(substr($user->name, 0, 1)) }}
+                                </div>
                             @endif
                         </div>
                         <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-green-400 rounded-full border-4 border-white flex items-center justify-center">

@@ -43,7 +43,13 @@
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                             <div class="flex items-center">
                                 <div class="w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-purple-600 flex items-center justify-center mr-2">
-                                    <span class="text-white text-sm font-medium">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                                    @if(Auth::user()->profile_picture)
+                                        <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}"
+                                             alt="{{ Auth::user()->name }}"
+                                             class="w-8 h-8 rounded-full object-cover">
+                                    @else
+                                        <span class="text-white text-sm font-medium">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
+                                    @endif
                                 </div>
                                 <div>
                                     <div>{{ Auth::user()->name }}</div>
@@ -121,7 +127,13 @@
             <div class="px-4">
                 <div class="flex items-center">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-purple-600 flex items-center justify-center mr-3">
-                        <span class="text-white text-sm font-medium">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                        @if(Auth::user()->profile_picture)
+                            <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}"
+                                 alt="{{ Auth::user()->name }}"
+                                 class="w-10 h-10 rounded-full object-cover">
+                        @else
+                            <span class="text-white text-sm font-medium">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
+                        @endif
                     </div>
                     <div>
                         <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>

@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -62,10 +63,29 @@ class RegisteredUserController extends Controller
 
         // Handle profile picture upload
         if ($request->hasFile('profile_picture')) {
-            $profilePicture = $request->file('profile_picture');
-            $filename = time() . '_' . $profilePicture->getClientOriginalName();
-            $profilePicture->storeAs('public/profile-pictures', $filename);
-            $userData['profile_picture'] = 'profile-pictures/' . $filename;
+            try {
+                $profilePicture = $request->file('profile_picture');
+                $filename = time() . '_' . $profilePicture->getClientOriginalName();
+
+                // Ensure the directory exists
+                $directory = storage_path('app/public/profile-pictures');
+                if (!file_exists($directory)) {
+                    mkdir($directory, 0755, true);
+                }
+
+                // Store the file
+                $path = $profilePicture->storeAs('public/profile-pictures', $filename);
+
+                if ($path) {
+                    $userData['profile_picture'] = 'profile-pictures/' . $filename;
+                } else {
+                    // Log error if upload fails
+                    Log::error('Profile picture upload failed for user: ' . $request->email);
+                }
+            } catch (\Exception $e) {
+                // Log any exceptions during upload
+                Log::error('Profile picture upload exception: ' . $e->getMessage());
+            }
         }
 
         $user = User::create($userData);
@@ -76,7 +96,7 @@ class RegisteredUserController extends Controller
 
         // Redirect based on role
         if ($user->role === 'teacher') {
-            return redirect()->route('teacher.dashboard')->with('success', 'Welcome to LearnHub! Your teacher dashboard is ready.');
+            return redirect()->route('teacher.dashboard')->with('success', 'Welcome to LearnHub! Your teacher dashboard is ready. You can now create student accounts for your class.');
         } else {
             return redirect()->route('student.dashboard')->with('success', 'Welcome to LearnHub! Your student dashboard is ready.');
         }
