@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\LearningTaskController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LearningRedirect;
 
@@ -17,9 +18,12 @@ Route::get('/start-learning', [LearningRedirect::class, 'redirect'])->name('star
 Route::get('/getStarted', [LearningRedirect::class, 'redirectToDashboard'])->name('getStarted');
 // redirect to about us
 Route::get('/learnMore', [LearningRedirect::class, 'redirectToAboutUs'])->name('learnMore');
+Route::get('/about-us', [LearningRedirect::class, 'redirectToAboutUs'])->name('about.us');
 
-
-Route::get('/dashboard', [TaskController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+// Role-based dashboard routes
+Route::get('/dashboard', [DashboardController::class, 'redirectToDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/teacher/dashboard', [DashboardController::class, 'teacherDashboard'])->middleware(['auth', 'verified', 'role:teacher'])->name('teacher.dashboard');
+Route::get('/student/dashboard', [DashboardController::class, 'studentDashboard'])->middleware(['auth', 'verified', 'role:student'])->name('student.dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

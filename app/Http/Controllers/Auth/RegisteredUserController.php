@@ -33,18 +33,52 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role' => ['required', 'string', 'in:teacher,student'],
+            'profile_picture' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'phone' => ['nullable', 'string', 'max:20'],
+            'date_of_birth' => ['nullable', 'date', 'before:today'],
+            'class' => ['nullable', 'string', 'max:50'],
+            'street_address' => ['nullable', 'string', 'max:255'],
+            'city' => ['nullable', 'string', 'max:100'],
+            'state' => ['nullable', 'string', 'max:100'],
+            'country' => ['nullable', 'string', 'max:100'],
+            'postal_code' => ['nullable', 'string', 'max:20'],
         ]);
 
-        $user = User::create([
+        $userData = [
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ]);
+            'role' => $request->role,
+            'phone' => $request->phone,
+            'date_of_birth' => $request->date_of_birth,
+            'class' => $request->class,
+            'street_address' => $request->street_address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'country' => $request->country,
+            'postal_code' => $request->postal_code,
+        ];
+
+        // Handle profile picture upload
+        if ($request->hasFile('profile_picture')) {
+            $profilePicture = $request->file('profile_picture');
+            $filename = time() . '_' . $profilePicture->getClientOriginalName();
+            $profilePicture->storeAs('public/profile-pictures', $filename);
+            $userData['profile_picture'] = 'profile-pictures/' . $filename;
+        }
+
+        $user = User::create($userData);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        // Redirect based on role
+        if ($user->role === 'teacher') {
+            return redirect()->route('teacher.dashboard')->with('success', 'Welcome to LearnHub! Your teacher dashboard is ready.');
+        } else {
+            return redirect()->route('student.dashboard')->with('success', 'Welcome to LearnHub! Your student dashboard is ready.');
+        }
     }
 }

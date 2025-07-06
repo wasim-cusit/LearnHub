@@ -144,7 +144,7 @@
                     <a href="/" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Home</a>
                     <a href="/#courses" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Courses</a>
                     <a href="/#features" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Features</a>
-                    <a href="/about-us" class="text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">About Us</a>
+                                            <a href="{{ route('about.us') }}" class="text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">About Us</a>
                     <a href="/#contact" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Contact</a>
                 </div>
                 <div class="flex items-center space-x-4">
@@ -289,24 +289,10 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-gray-50 rounded-xl p-8 text-center card-hover">
-                    <img class="w-32 h-32 rounded-full mx-auto mb-6 object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80" alt="CEO">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">David Chen</h3>
-                    <p class="text-indigo-600 font-medium mb-4">CEO & Founder</p>
-                    <p class="text-gray-600 mb-4">Former Google engineer with 15+ years in edtech. Passionate about making education accessible to everyone.</p>
-                    <div class="flex justify-center space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-indigo-600 transition duration-300">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-indigo-600 transition duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="bg-gray-50 rounded-xl p-8 text-center card-hover">
-                    <img class="w-32 h-32 rounded-full mx-auto mb-6 object-cover" src="https://ix-marketing.imgix.net/focalpoint.png?auto=format,compress&w=1946" alt="CTO">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Sarah Johnson</h3>
-                    <p class="text-indigo-600 font-medium mb-4">CTO</p>
-                    <p class="text-gray-600 mb-4">Tech leader with expertise in AI and machine learning. Building the future of personalized education.</p>
+                    <img class="w-32 h-32 rounded-full mx-auto mb-6 object-cover shadow-lg" src="{{ asset('images/Muhammad_Wasim.jpg') }}" alt="Engineer Muhammad Wasim">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Engineer MUHAMMAD WASIM</h3>
+                    <p class="text-indigo-600 font-medium mb-4">Lead Developer</p>
+                    <p class="text-gray-600 mb-4">Expert software engineer with extensive experience in web development and educational technology. Passionate about creating innovative learning solutions.</p>
                     <div class="flex justify-center space-x-4">
                         <a href="#" class="text-gray-400 hover:text-indigo-600 transition duration-300">
                             <i class="fab fa-linkedin"></i>
@@ -317,16 +303,30 @@
                     </div>
                 </div>
                 <div class="bg-gray-50 rounded-xl p-8 text-center card-hover">
-                    <img class="w-32 h-32 rounded-full mx-auto mb-6 object-cover" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80" alt="Head of Content">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Emily Rodriguez</h3>
-                    <p class="text-indigo-600 font-medium mb-4">Head of Content</p>
-                    <p class="text-gray-600 mb-4">Former university professor with a PhD in Education. Creating world-class learning experiences.</p>
+                    <img class="w-32 h-32 rounded-full mx-auto mb-6 object-cover shadow-lg" src="{{ asset('images/dr_halil_khan.jpg') }}" alt="Dr Halil Khan">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Dr Halil Khan</h3>
+                    <p class="text-indigo-600 font-medium mb-4">Research Director</p>
+                    <p class="text-gray-600 mb-4">Distinguished researcher and academic with expertise in educational technology and learning methodologies. Driving innovation in digital education.</p>
                     <div class="flex justify-center space-x-4">
                         <a href="#" class="text-gray-400 hover:text-indigo-600 transition duration-300">
                             <i class="fab fa-linkedin"></i>
                         </a>
                         <a href="#" class="text-gray-400 hover:text-indigo-600 transition duration-300">
                             <i class="fas fa-globe"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-8 text-center card-hover">
+                    <img class="w-32 h-32 rounded-full mx-auto mb-6 object-cover shadow-lg" src="{{ asset('images/dr_farman_ullah.jpg') }}" alt="Dr Farman Ullah">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Dr Farman Ullah</h3>
+                    <p class="text-indigo-600 font-medium mb-4">Academic Advisor</p>
+                    <p class="text-gray-600 mb-4">Renowned academic and educational consultant with deep knowledge in curriculum development and student success strategies.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-indigo-600 transition duration-300">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-600 transition duration-300">
+                            <i class="fas fa-graduation-cap"></i>
                         </a>
                     </div>
                 </div>
@@ -345,19 +345,19 @@
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div class="text-center">
-                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">2M+</div>
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">10K+</div>
                     <div class="text-gray-200">Active Learners</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">500+</div>
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">50+</div>
                     <div class="text-gray-200">Expert Instructors</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">10K+</div>
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">100+</div>
                     <div class="text-gray-200">Courses Available</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">95%</div>
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">98%</div>
                     <div class="text-gray-200">Success Rate</div>
                 </div>
             </div>
@@ -404,8 +404,8 @@
                         <div class="w-1/2 pr-8"></div>
                         <div class="w-4 h-4 bg-indigo-600 rounded-full border-4 border-white shadow-lg"></div>
                         <div class="w-1/2 pl-8">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">2024 - Global Leader</h3>
-                            <p class="text-gray-600">Became the world's leading online learning platform with 2M+ active learners.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">2024 - Growing Platform</h3>
+                            <p class="text-gray-600">Expanding our reach with 10K+ active learners and continuous platform improvements.</p>
                         </div>
                     </div>
                 </div>
@@ -465,7 +465,7 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Company</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="/about-us" class="hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="{{ route('about.us') }}" class="hover:text-white transition duration-300">About Us</a></li>
                         <li><a href="#" class="hover:text-white transition duration-300">Careers</a></li>
                         <li><a href="#" class="hover:text-white transition duration-300">Blog</a></li>
                         <li><a href="#" class="hover:text-white transition duration-300">Press</a></li>

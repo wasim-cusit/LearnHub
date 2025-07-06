@@ -136,11 +136,11 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="text-left">
                     <h1 class="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                        Master New Skills
-                        <span class="block text-yellow-300">Anytime, Anywhere</span>
+                        Learn & Teach
+                        <span class="block text-yellow-300">Together</span>
                     </h1>
                     <p class="text-xl text-gray-200 mb-8 leading-relaxed">
-                        Join millions of learners worldwide and unlock your potential with our comprehensive online learning platform. From coding to design, business to arts - we've got you covered.
+                        Join our innovative learning platform designed for both students and teachers. Students can track their progress through structured learning paths, while teachers can create and manage educational content with powerful tools.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <button class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition duration-300 shadow-lg">
@@ -152,11 +152,11 @@
                     </div>
                     <div class="mt-8 flex items-center text-white">
                         <div class="flex -space-x-2">
-                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://ix-marketing.imgix.net/focalpoint.png?auto=format,compress&w=1946" alt="User">
-                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=100&q=80" alt="User">
-                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=100&q=80" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="{{ asset('images/Muhammad_Wasim.jpg') }}" alt="Engineer Muhammad Wasim">
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="{{ asset('images/dr_halil_khan.jpg') }}" alt="Dr Halil Khan">
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="{{ asset('images/dr_farman_ullah.jpg') }}" alt="Dr Farman Ullah">
                         </div>
-                        <p class="ml-4 text-sm">Join 50,000+ learners worldwide</p>
+                        <p class="ml-4 text-sm">Join 10,000+ learners worldwide</p>
                     </div>
                 </div>
                 <div class="relative">
@@ -311,6 +311,107 @@
         </div>
     </section>
 
+    <!-- Role-Based Features -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Designed for Everyone</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Whether you're a student eager to learn or a teacher ready to inspire, we have the perfect tools for you
+                </p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Student Features -->
+                <div class="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-2xl border border-green-100">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-green-600 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">For Students</h3>
+                            <p class="text-green-600 font-medium">Track your learning journey</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-green-600 text-sm"></i>
+                            </div>
+                            <span class="text-gray-700">Personalized learning dashboard</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-green-600 text-sm"></i>
+                            </div>
+                            <span class="text-gray-700">Progress tracking and analytics</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-green-600 text-sm"></i>
+                            </div>
+                            <span class="text-gray-700">Structured learning paths</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-green-600 text-sm"></i>
+                            </div>
+                            <span class="text-gray-700">Task management and completion</span>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <a href="{{ route('register') }}" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition duration-200">
+                            Join as Student
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Teacher Features -->
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border border-purple-100">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-chalkboard-teacher text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">For Teachers</h3>
+                            <p class="text-purple-600 font-medium">Create and manage content</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-purple-600 text-sm"></i>
+                            </div>
+                            <span class="text-gray-700">Powerful content creation tools</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-purple-600 text-sm"></i>
+                            </div>
+                            <span class="text-gray-700">Student progress monitoring</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-purple-600 text-sm"></i>
+                            </div>
+                            <span class="text-gray-700">Task assignment and management</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-purple-600 text-sm"></i>
+                            </div>
+                            <span class="text-gray-700">Analytics and insights</span>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <a href="{{ route('register') }}" class="inline-block bg-purple-500 hover:bg-purple-600 text-white font-semibold px-6 py-3 rounded-lg transition duration-200">
+                            Join as Teacher
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Testimonials -->
     <section id="testimonials" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -331,12 +432,12 @@
                             <i class="fas fa-star"></i>
                         </div>
                     </div>
-                    <p class="text-gray-600 mb-6">"LearnHub completely changed my career trajectory. The web development course helped me land my dream job as a frontend developer."</p>
+                    <p class="text-gray-600 mb-6">"LearnHub's structured learning approach helped me master web development. The platform's intuitive design and expert guidance made my learning journey incredibly smooth."</p>
                     <div class="flex items-center">
-                        <img class="w-12 h-12 rounded-full mr-4" src="https://ix-marketing.imgix.net/focalpoint.png?auto=format,compress&w=1946" alt="Sarah Johnson">
+                        <img class="w-12 h-12 rounded-full mr-4 object-cover" src="{{ asset('images/Muhammad_Wasim.jpg') }}" alt="Engineer Muhammad Wasim">
                         <div>
-                            <h4 class="font-semibold text-gray-900">Sarah Johnson</h4>
-                            <p class="text-sm text-gray-500">Frontend Developer</p>
+                            <h4 class="font-semibold text-gray-900">Engineer Muhammad Wasim</h4>
+                            <p class="text-sm text-gray-500">Lead Developer</p>
                         </div>
                     </div>
                 </div>
@@ -350,12 +451,12 @@
                             <i class="fas fa-star"></i>
                         </div>
                     </div>
-                    <p class="text-gray-600 mb-6">"The flexibility of learning at my own pace was perfect for my busy schedule. The instructors are incredibly knowledgeable and supportive."</p>
+                    <p class="text-gray-600 mb-6">"As a researcher, I appreciate the depth and quality of content on LearnHub. The platform's commitment to educational excellence is truly remarkable."</p>
                     <div class="flex items-center">
-                        <img class="w-12 h-12 rounded-full mr-4" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=100&q=80" alt="Michael Chen">
+                        <img class="w-12 h-12 rounded-full mr-4 object-cover" src="{{ asset('images/dr_halil_khan.jpg') }}" alt="Dr Halil Khan">
                         <div>
-                            <h4 class="font-semibold text-gray-900">Michael Chen</h4>
-                            <p class="text-sm text-gray-500">UX Designer</p>
+                            <h4 class="font-semibold text-gray-900">Dr Halil Khan</h4>
+                            <p class="text-sm text-gray-500">Research Director</p>
                         </div>
                     </div>
                 </div>
@@ -369,12 +470,12 @@
                             <i class="fas fa-star"></i>
                         </div>
                     </div>
-                    <p class="text-gray-600 mb-6">"I started with zero coding knowledge and now I'm building my own applications. The step-by-step approach made everything so clear."</p>
+                    <p class="text-gray-600 mb-6">"The academic rigor and practical approach of LearnHub's courses have been invaluable for my professional development. Highly recommended!"</p>
                     <div class="flex items-center">
-                        <img class="w-12 h-12 rounded-full mr-4" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=100&q=80" alt="Emily Rodriguez">
+                        <img class="w-12 h-12 rounded-full mr-4 object-cover" src="{{ asset('images/dr_farman_ullah.jpg') }}" alt="Dr Farman Ullah">
                         <div>
-                            <h4 class="font-semibold text-gray-900">Emily Rodriguez</h4>
-                            <p class="text-sm text-gray-500">Full Stack Developer</p>
+                            <h4 class="font-semibold text-gray-900">Dr Farman Ullah</h4>
+                            <p class="text-sm text-gray-500">Academic Advisor</p>
                         </div>
                     </div>
                 </div>
@@ -434,7 +535,7 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Company</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="{{ route('about.us') }}" class="hover:text-white transition duration-300">About Us</a></li>
                         <li><a href="#" class="hover:text-white transition duration-300">Careers</a></li>
                         <li><a href="#" class="hover:text-white transition duration-300">Blog</a></li>
                         <li><a href="#" class="hover:text-white transition duration-300">Press</a></li>
